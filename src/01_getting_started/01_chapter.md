@@ -1,25 +1,13 @@
 # Getting Started
 
-Welcome to Asynchronous Programming in Rust! If you're looking to start writing
-asynchronous Rust code, you've come to the right place. Whether you're building
-a web server, a database, or an operating system, this book will show you
-how to use Rust's asynchronous programming tools to get the most out of your
-hardware.
+ようこそRustの非同期プログラミングへ！ 非同期のRustコードを作りたいなら、キミは適切な場所に来ています。 webサーバーやデータベース、オペレーティングシステムのいずれかを構築している場合でも、このドキュメントは、Rustの非同期プログラミングツールを使用してハードウェア性能を最大限に活用する方法を示します。
 
 ## What This Book Covers
 
-This book aims to be a comprehensive, up-to-date guide to using Rust's async
-language features and libraries, appropriate for beginners and old hands alike.
+この本は、Rustの非同期な言語機能、ライブラリを使用するための、初心者と熟練者に適した、最新の、包括的なガイドを目指しています。
 
-- The early chapters provide an introduction to async programming in general,
-and to Rust's particular take on it.
+- 初期の章では、非同期プログラミングの一般的な概要と、それに対してRustがどのように取り組んでいるか話します。
 
-- The middle chapters discuss key utilities and control-flow tools you can use
-when writing async code, and describe best-practices for structuring libraries
-and applications to maximize performance and reusability.
+- 中間章では、非同期なコードを書く時に使うことのできる、主なユーティリティと制御フローツールについて説明し、パフォーマンスと再利用性を最大限発揮するために、ライブラリとアプリケーションを構築するときのベストプラクティスを紹介します。
 
-- The last section of the book covers the broader async ecosystem, and provides
-a number of examples of how to accomplish common tasks.
-
-With that out of the way, let's explore the exciting world of Asynchronous
-Programming in Rust!
+- 最後の章では、広い範囲の非同期エコシステムについて説明し、一般的た課題を達成するための例をいくつか紹介します
