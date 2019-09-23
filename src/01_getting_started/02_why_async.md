@@ -1,45 +1,28 @@
-# Why Async?
+# なぜ非同期なのか？
 
-We all love how Rust allows us to write fast, safe software. But why write
-asynchronous code?
+Rustを使うと、高速で安全なソフトウェアが書けます。しかし、なぜ非同期コードを書くんでしょう？
 
-Asynchronous code allows us to run multiple tasks concurrently on the same OS
-thread. In a typical threaded application, if you wanted to download two
-different webpages at the same time, you would spread the work across two
-different threads, like this:
+非同期コードを使用すると、同じOSのスレッドで複数のタスクを同時に実行できるようになる。 典型的なスレッドを使ったアプリケーションでは、2つのwebページを同時にダウンロードしたい時、次のように2つのスレッドに作業を分散します。
 
 ```rust
 {{#include ../../examples/01_02_why_async/src/lib.rs:get_two_sites}}
 ```
 
-This works fine for many applications-- after all, threads were designed
-to do just this: run multiple different tasks at once. However, they also
-come with some limitations. There's a lot of overhead involved in the
-process of switching between different threads and sharing data between
-threads. Even a thread which just sits and does nothing uses up valuable
-system resources. These are the costs that asynchronous code is designed
-to eliminate. We can rewrite the function above using Rust's
-`async`/`.await` notation, which will allow us to run multiple tasks at
-once without creating multiple threads:
+これは多くのアプリケーションでうまく機能する。スレッドはこれを行うように設計されているからね。複数の異なるタスクを同時に実行するようにね。
+
+ただ、いくつか制限もあるんだ。スレッドの切り替えや、スレッド間でのデータ共有をするプロセスにはオーバーヘッドが結構あるのです、、、、
+
+ただ何もしないで居座っているスレッドでさえ、貴重なシステムリソースを食いつぶします。これらは、非同期コードが排除するために設計されたコストです。私達はRustの`async`/`.await`記法を使って、先程のコードを書き換えることが出来ます。それも、複数スレッドを作成することなく、一度に複数タスクを実行できるようにね。
 
 ```rust
 {{#include ../../examples/01_02_why_async/src/lib.rs:get_two_sites_async}}
 ```
 
-Overall, asynchronous applications have the potential to be much faster and
-use fewer resources than a corresponding threaded implementation. However,
-there is a cost. Threads are natively supported by the operating system,
-and using them doesn't require any special programming model-- any function
-can create a thread, and calling a function that uses threads is usually
-just as easy as calling any normal function. However, asynchronous functions
-require special support from the language or libraries.
-In Rust, `async fn` creates an asynchronous function which returns a `Future`.
-To execute the body of the function, the returned `Future` must be run to
-completion.
+全体として、非同期アプリケーションはスレッド実装よりもすごく高速で、使うリソースも少ない可能性があります。ただし、コストがかかってしまいます。
+スレッドはOSによってネイティブにサポートされているので、特別なプログラミングモデルは不必要です、どんな関数もスレッドを作成でき、通常の関数と同じくらい簡単にスレッドを使用する関数を呼び出すことが出来ます。
 
-It's important to remember that traditional threaded applications can be quite
-effective, and that Rust's small memory footprint and predictability mean that
-you can get far without ever using `async`. The increased complexity of the
-asynchronous programming model isn't always worth it, and it's important to
-consider whether your application would be better served by using a simpler
-threaded model.
+ただし、非同期関数は、言語もしくはライブラリの特別なサポートが必要になります。Rustでは、`async fn`が`Future`を返す非同期関数を作ってくれます。関数本体を実行するには`Future`を最後まで実行する必要があります。
+
+従来のスレッド化されたアプリケーションも非常に効果的で、Rustの小さなメモリ追跡と予測によって`async`を使わなくても十分である可能性を忘れないでください。
+
+非同期プログラミングモデルによる複雑性の増加は、常にそれだけの価値があるか分からいないものです。単純なスレッドモデルの使用を考慮することも重要です。
