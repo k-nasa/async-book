@@ -1,14 +1,12 @@
-# Applied: Simple HTTP Server
+# シンプルなHTTPサーバーを書いてみよう！
 
-Let's use `async`/`.await` to build an echo server!
+`async / await`を使用してエコーサーバーを作ってみよう！
 
-To start, run `rustup update nightly` to make sure you've got the latest and
-greatest copy of Rust-- we're working with bleeding-edge features, so it's
-essential to stay up-to-date. Once you've done that, run
-`cargo +nightly new async-await-echo` to create a new project, and open up
-the resulting `async-await-echo` folder.
+まず、`rustup update nightly`を実行して最新かつ最高のRustを手に入れましょう。
+最新の機能を使用しているため最新の状態を維持することが必要です。
 
-Let's add some dependencies to the `Cargo.toml` file:
+そしたら、`cargo +nightly new async-await-echo`を実行して新しいプロジェクトを作成しましょう。
+`Cargo.toml`ファイルにいくつか依存関係を追加しましょう。
 
 ```toml
 {{#include ../../examples/01_05_http_server/Cargo.toml:9:18}}
