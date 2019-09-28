@@ -43,8 +43,4 @@ async fn dance() { ... }
 
 この例では、歌を歌う前に歌を学習する必要がありますが、詩を学ぶと同時に踊ることもできます。 `learn_and_sing`で`learn_song().await`ではなく`block_on(learn_son())`を使ってしまうと、スレッドはしばらくの間他のとこを行うことができなくなり、同時に踊ることを不可能にします。
 
-
-By `.await`-ing the `learn_song` future, we allow other tasks to take over the current thread if `learn_song` is blocked. This makes it possible to run multiple futures to completion concurrently on the same thread.
-
-Now that you've learned the basics of `async`/`await`, let's try out an
-example.
+ 今学習した、`async / await` の例を試してみましょう！
